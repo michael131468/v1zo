@@ -5,27 +5,35 @@ photos and videos, give it some music, and it produces a beat-synced, curated
 FCPXML ready to open in Final Cut Pro.
 
 Under the hood it taps directly into Apple's on-device AI frameworks —
-**Vision** for scene detection, saliency analysis, face detection, and image
-classification; **AVFoundation** for frame-accurate media inspection — so
-everything runs locally, fast, and without any cloud API. Beat detection and
-music analysis use **librosa**, and the whole thing outputs **FCPXML 1.11**,
-the native interchange format for Final Cut Pro.
+[**Vision**](https://developer.apple.com/documentation/vision) for scene
+detection, saliency analysis, face detection, and image classification;
+[**AVFoundation**](https://developer.apple.com/documentation/avfoundation)
+for frame-accurate media inspection — so everything runs locally, fast, and
+without any cloud API. Beat detection and music analysis use
+[**librosa**](https://librosa.org), and the whole thing outputs **FCPXML
+1.11**, the native interchange format for Final Cut Pro.
+
+> **Requires Apple Silicon.** The Vision framework features used here
+> (saliency, feature prints, face detection) rely on the Apple Neural Engine
+> and are only available on ARM-based Macs (M1 or later).
 
 > **Note:** This project is vibe coded. It scratches a personal itch and the
 > codebase reflects that — contributions are not really expected or welcomed.
 
 ## Screenshots
 
-![Scout scanning media](docs/screenshot1.png)
-![Scout extracting snippets](docs/screenshot2.png)
-![Critic, identifier, and maestro phases](docs/screenshot4.png)
-![Maestro analysing music](docs/screenshot3.png)
-![Director assembling timeline](docs/screenshot6.png)
-![Pipeline complete](docs/screenshot7.png)
+<a href="docs/screenshot1.png"><img src="docs/screenshot1.png" width="49%" alt="Scout scanning media"></a>
+<a href="docs/screenshot2.png"><img src="docs/screenshot2.png" width="49%" alt="Scout extracting snippets"></a>
+<a href="docs/screenshot4.png"><img src="docs/screenshot4.png" width="49%" alt="Critic, identifier, and maestro phases"></a>
+<a href="docs/screenshot3.png"><img src="docs/screenshot3.png" width="49%" alt="Maestro analysing music"></a>
+<a href="docs/screenshot6.png"><img src="docs/screenshot6.png" width="49%" alt="Director assembling timeline"></a>
+<a href="docs/screenshot7.png"><img src="docs/screenshot7.png" width="49%" alt="Pipeline complete"></a>
+<a href="docs/screenshot9.png"><img src="docs/screenshot9.png" width="49%" alt="Scout review"></a>
+<a href="docs/screenshot8.png"><img src="docs/screenshot8.png" width="49%" alt="Curator review"></a>
 
 ## Requirements
 
-- macOS (uses Apple Vision framework for scene analysis)
+- macOS on Apple Silicon (M1 or later) — required for the [Vision framework](https://developer.apple.com/documentation/vision)
 - [uv](https://github.com/astral-sh/uv) — each script declares its own
   dependencies via PEP 723 inline metadata
 - `ffmpeg` — `brew install ffmpeg`
